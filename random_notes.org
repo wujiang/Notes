@@ -32,5 +32,5 @@
 * openbsd as vm guest
 ** sync time with host
 #+BEGIN_SRC
-- */5     *       *       *       *       /usr/sbin/rdate -s base
+*/5     *       *       *       *       /usr/sbin/rdate -s base
 #+END_SRC
