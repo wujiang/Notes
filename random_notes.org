@@ -1,0 +1,34 @@
+-*- mode: org; fill-column: 78 -*-
+#+TODO: TODO(t) PENDING(p!) WAITING(w@/!) | CANCELED(c@) DONE(d@)
+#+TAGS: { @work(w) @home(h) }
+#+TAGS: { pl(p) db(d) mobile(m) research(r) }
+#+STARTUP: indent
+#+STARTUP: lognoteclock-out logredeadline lognoteredeadline logdrawer
+#+STARTUP: entitiespretty
+#+DRAWERS: COLLABORATOR
+#+TITLE: Notes
+#+AUTHOR: Wu Jiang
+#+EMAIL: wu@morediff.info
+#+DATE: <2014-04-04 Fri>
+
+
+* mutt
+** Open attachment in remote host
+   - ~/.mailcap
+     #+BEGIN_SRC
+     text/html; w3m -I %{charset} -T text/html; copiousoutput;
+     application/*; open_in_base '%s'; needsterminal
+     #+END_SRC
+   - ~/opt/bin/open_in_base
+     #+BEGIN_SRC
+     #!/bin/sh
+
+     FILENAME=$1
+     REMOTE_HOST=base
+     scp "${FILENAME}" "${REMOTE_HOST}:${FILENAME}"
+     ssh $REMOTE_HOST "open '${FILENAME}' >& /dev/null &"
+     #+END_SRC
+
+* openbsd as vm guest
+** sync time with host
+- */5     *       *       *       *       /usr/sbin/rdate -s base
